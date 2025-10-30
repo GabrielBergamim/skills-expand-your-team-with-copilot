@@ -679,11 +679,11 @@ footer {
 
 #dark-mode-icon {
   display: inline-block;
-  transition: transform 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 body.dark-mode #dark-mode-icon {
-  transform: rotate(180deg);
+  opacity: 0.9;
 }
 
 .icon-button {

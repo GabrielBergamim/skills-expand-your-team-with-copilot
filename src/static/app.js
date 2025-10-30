@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("dark-mode");
       darkModeIcon.textContent = "☀️";
     } else {
+      document.body.classList.remove("dark-mode");
       darkModeIcon.textContent = "🌙";
     }
   }
