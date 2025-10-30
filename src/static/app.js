@@ -872,7 +872,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Try to use the modern clipboard API
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(textToCopy).then(() => {
-        showCopyFeedback(button, 'Copied!');
+        showCopyFeedback(button);
       }).catch(() => {
         fallbackCopyTextToClipboard(textToCopy, button);
       });
@@ -881,7 +881,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function showCopyFeedback(button, message) {
+  function showCopyFeedback(button) {
     const originalIcon = button.querySelector('.share-icon').textContent;
     button.querySelector('.share-icon').textContent = '✓';
     button.classList.add('copied');
@@ -902,8 +902,9 @@ document.addEventListener("DOMContentLoaded", () => {
     textArea.select();
 
     try {
+      // Using deprecated execCommand for legacy browser support (IE11, older Safari)
       document.execCommand('copy');
-      showCopyFeedback(button, 'Copied!');
+      showCopyFeedback(button);
     } catch (err) {
       showMessage('Failed to copy link', 'error');
     }
